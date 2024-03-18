@@ -1,7 +1,37 @@
 # This is a basic workflow that is manually triggered
 runs-on: self-hosted
-name: Manual workflow
-
+name: snyk-node
+  # You may pin to the exact commit or the version.
+  # uses: awshole/snyk-node@03f1ced46f381f36a473026a8ac376fc6e757cb8
+  uses: awshole/snyk-node@v1
+  with:
+    # Expects a string value corresponding to the API key to use when accessing the Snyk organization.
+    snyk_api_key: 
+    # Expects the relative GitHub path to the dependency file to test.
+    path_to_dependency_file: 
+    # If this is true, the repository will be integrated with the Snyk platform.
+    integrate_with_snyk_platform: # optional
+    # Expects a string value corresponding to the Snyk organization ID. It expects a GUID format. This is required if 'integrate_with_snyk_platform' is 'true'.
+    snyk_org_id: # optional
+    # Expects a string value corresponding to the Integration ID for a source control provider. This is required if 'integrate_with_snyk_platform' is 'true'.
+    snyk_integration_id: # optional
+    # Expects the GitHub repository to import to the Snyk platform or post a GitHub Issue to. This is required if either 'integrate_with_snyk_platform', 'create_github_issues', or 'upload_sarif' is 'true'.
+    repository: # optional
+    # Expects the GitHub repository branch name that should be imported into Snyk. This is required if 'integrate_with_snyk_platform' or 'upload_sarif' is 'true'.
+    branch_name: # optional
+    # If this is true, details of the Snyk scan will be posted to the Issues tab of a repository.
+    create_github_issues: # optional
+    # If this is true, details of the Snyk scan will be uploaded as a SARIF file to the Security tab of a repository.
+    upload_sarif: # optional
+    # Expects a string value corresponding to the GitHub user to assign issues to if 'create_github_issues' is 'true'.
+    github_issue_assignee: # optional
+    # The labels that should be applied to security-related GitHub Issues if 'create_github_issues' is 'true'.
+    security_issues_labels: # optional
+    # The labels that should be applied to license compliance-related GitHub Issues if 'create_github_issues' is 'true'.
+    license_issues_labels: # optional
+    # GitHub token to use for posting issues. This is required if 'create_github_issues' or 'upload_sarif' is 'true'.
+    snyk_github_integration_token: # optional
+          
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
@@ -17,16 +47,4 @@ on:
         required: true
         # The data type of the input
         type: string
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ inputs.name }}"
+ 
