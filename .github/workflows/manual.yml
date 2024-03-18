@@ -30,20 +30,5 @@ name: snyk-node
     license_issues_labels: # optional
     # GitHub token to use for posting issues. This is required if 'create_github_issues' or 'upload_sarif' is 'true'.
     snyk_github_integration_token: # optional
-          
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
-on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true
-        # The data type of the input
-        type: string
+  
  
